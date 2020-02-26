@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Halo clicker</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="misc.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="notify.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/site.webmanifest">
+  </head>
+  <body class='hasBackground'>
+    <div class='main' id='main'>
+        <h3 class='h3 none' id='hh'>
+            Halo clicker
+        </h3>
+        <div onmousedown='clickll()' class='tooltip something'><img src='images/helmet.png' align='left'></div>
+    <div class='aa' onselectstart='return false;'>
+        <p class='pp' id='x'>Balance: $<span id='money'>20.00</span><br>
+        Income: $<span id='income'>0</span>/sec</p>
+      </div>
+
+<button class='tabs'type='button'onclick='tabs("a", "ops", "b")'>
+  Army
+</button>
+<button class='tabs'type='button'onclick='tabs("b", "a", "ops")'>
+  Resources
+</button>
+<button class='tabs'type='button'onclick='tabs("ops", "a", "b")'>
+  Options
+</button>
+<div id='a'>
+<div class='box'>
+    <div id='soldiers' class='army'>
+        <h3>Recruiting</h3>
+        <p class='pp'><span>
+                <button class='btn' onmousedown='buy_unit(ff.marines)' type='button' id='marinebutton'>
+                    Train 1 marine. Cost: $<span id='marinecost'>5.00</span>
+                </button>
+            </span>
+        </p>
+        <p class='pp'>
+            <span>
+                <button class='btn'type='button'onmousedown='buy_unit(ff.odsts)' id='odstbutton'>
+                    Train 1 ODST. Cost: $<span id='odstcost'>30.00</span>
+                </button>
+            </span>
+        </p>
+        <button class='btn' type='button' onmousedown='buy_unit(ff.spartans)' id='spartanbutton'>
+            Train 1 spartan II. Cost: $<span id='spartancost'>1000.00</span>
+        </button><br><br>
+    </div>
+
+
+    
+    <div class='army'>
+        <h3>Production</h3>
+        <p class='pp'id='x'><span>
+            <button class='btn' onmousedown='buy_production(ff.basic_factory)' type='button' id='fact1'>
+                Basic factory. Cost: $<span id='factory1'>75.00</span>
+            </button>
+            </span>
+            Basic factories (+1 income/sec): <span id='f1'>0</span></p>
+
+        <p class='pp'id='x'><span>
+            <button class='btn' onmousedown='buy_production(ff.tier2_factory)' type='button' id='fact2'>
+                Tier 2 factory. Cost: $<span id='factory2'>250.00</span>
+            </button>
+            </span>
+            Tier 2 factories (+2 income/sec): <span id='f2'>0</span></p>
+
+        <p class='pp'id='x'>
+            <span>
+                <button class='btn' type='button' onmousedown="buy_production(ff.tier3_factory)" id='fact3'>
+                    Tier 3 factory. Cost: $
+                    <span id='factory3'>
+                        1,000.00
+                    </span>
+                </button>
+            </span>
+            Tier 3 factories (+5 income/sec): 
+            <span id='f3'>
+                0
+            </span>
+        </p>
+        <p class='pp'id='x'>
+            <span>
+                <button class='btn' type='button' onmousedown="buy_production(ff.shipments)" id='fact4'>
+                    Shipment. Cost: $<span id='factory4'>
+                        5,000.00
+                    </span>
+                </button>
+            </span>
+        Shipments (+10 income/sec): <span id='f4'>
+            0</span>
+        </p>
+                    
+    </div>
+    <div class='army'>
+        <h3>Battle</h3>
+        <p class='pp'id='x'>Victories: <span id='wins'>0</span><br>
+            Losses: <span id='defeats'>0</span><br>
+            Ties: <span id='ties'>0</span>
+        <br>
+            Win percentage: <span id='chance'>0</span>%/<span id='max'>0</span>%<br>
+            Cooldown: <span id='tick'>500</span>ms</p>
+
+        <div id='barContainer' style='width:100%;height:10px;background:white;text-align:center;position:relative;'>
+      <div id='bar' style='height: 100%; width: 100%; background-color: rgb(0, 204, 0); display: block; margin: auto;'>
+      </div>
+    </div>
+    </div>
+    
+<!--<br><br><br><br><br><br><br><br>-->
+
+
+    
+</div>
+<div class='box more'>
+    <div class='army'>
+        <h3>Stats</h3>
+        <h4>Army:</h4>
+        <p class='pp'id='x'>Marines:<!-- (lvl <span id='lvl1'>0</span>)--><br>
+          Amount: <span id='marines'>0</span><br>
+          Stats: <span id='atk1'>1</span>/<span id='def1'>1</span><span>
+            <button class='btn wide' type='button' onclick='upgrade(ff.marines)' id='up1'>
+              Upgrade marines.
+            </button>
+            <span class='mist'>10 metal, 15 ore</span>
+        </p>
+        <p class='pp'id='x'>ODSTs<!-- (lvl <span id='lvl2'>0</span>)-->:<br>
+          Amount: <span id='odsts'>0</span><br>
+          Stats: <span id='atk2'>3</span>/<span id='def2'>2</span><span>
+            <button class='btn wide' type='button' onclick='upgrade(ff.odsts)' id='up2'>
+              Upgrade ODSTs.
+            </button>
+            <span class='mist'>25 metal, 30 ore</span>
+        </p>
+        <p class='pp'id='x'>Spartans<!-- (lvl <span id='lvl3'>0</span>)-->:<br>
+          Amount: <span id='spartans'>0</span><br>
+          Stats: <span id='atk3'>25</span>/<span id='def3'>5</span><span>
+            <button class='btn wide' type='button' onclick='upgrade(ff.spartans)' id='up3'>
+              Upgrade SPARTANs.
+            </button>
+            <span class='mist'>100 metal, 150 ore</span>
+        </p>
+        <p class='pp'id='x'>Army pop: <span id='pop'>0</span><br>
+          Max pop: <span id='maxpop'>0</span></p>
+
+            
+
+
+    </div>
+
+    <div class='army'>
+      <h3>Structures (housing)</h3>
+      <button class='btn' type='button' onmousedown='buy_housing(ff.camps)' id='h1'>Buy 1 camp. Cost: $<span id='campcost'>10</span> (+1 housing)</button>
+      <button class='btn' type='button' onmousedown='buy_housing(ff.barracks)' id='h2'>Buy 1 barracks. Cost: $<span id='barrackcost'>25</span> (+3 housing)</button>
+      <button class='btn' type='button' onmousedown='buy_housing(ff.bases)' id='h3'>Buy 1 bunker. Cost: $<span id='basecost'>250</span> (+20 housing)</button>
+
+    </div>
+</div>
+
+</div>
+
+
+
+<div id='b' style='display:none;'><br><br>
+  <div class='box' style='display:inline-block;'>
+  <button class='tabs' type='button' onclick='tabShow("metal", "ore", "factilites")'>
+    Metal</button><br><br>
+  <button class='tabs' type='button' onclick='tabShow("ore", "metal", "factilites")'>
+    Mining
+  </button><br><br>
+  <button class='tabs' type='button' onclick='tabShow("factilites", "ore", "metal")'>
+    Facilities
+  </button><br><br>
+  </div>
+
+  <div class='box'>
+    <div class='army' id='metal' style='display:none;'>
+      <h4>Metal</h4>
+      <button class='btn' type='button' onclick='gainResource(ff.metal)'>
+        Craft 1 metal.
+      </button>
+      <p class='pp'>
+        Metal is one of the materials needed to upgrade troops.
+      </p>
+      <p class='pp'>Metal: <span id='playerMetal'>0</span></p>
+      <button class='btn' type='button' onclick='metalWorker()'>
+        Hire 1 metalworker. ($10)
+      </button>
+    </div>
+
+    <div class='army' id='ore' style='display:none;'>
+      <h4>Ore</h4>
+      <button class='btn'type='button'onclick='gainResource(ff.ore)'>
+        Mine 1 ore.
+      </button>
+      <p class='pp'>
+        Ore is one of the materials needed to upgrade troops.<br> It is one of the cheaper and more needed materials.</p>
+      <p class='pp'>
+        Ore: <span id='playerOre'>
+          0</span>
+      </p>
+    </div>
+    <div class='army' id='factilites' style='display:none;'>
+      <h4>Facilities</h4>
+      <p class='pp'>Factory<br>Metal workers need a place to work!<br>Housing: +10
+      <span><button class='btn'type='button'onclick='metalFactory()'>
+        Build 1 metal factory.
+        </button></span>
+      </p>
+      <p class='pp'>Mine<br>Miners also need a place to work.<br>Housing: +15</p>
+    </div>
+
+  </div>
+    </div>
+
+</div>
+
+  
+
+    
+</div>
+
+
+
+    
+
+    </div>
+
+
+  <div class='army f' id='ops'style='display:none;'>
+        
+        <button type='button'onmousedown='save()'class='b'>
+            Save game
+        </button>
+        <p class='mist' style='font-family: "Arial";'>Over writes current save file</p>
+        <button type='button'onmousedown='load()'class='b'>
+            Load game
+        </button>
+        <p class='mist' style='font-family: "Arial";'>Loads current save file.</p>
+        <button type='button'onmousedown='toggle()'class='b'>
+            Disable/enable autosave
+        </button><p class='mist' style='font-family: "Arial";'>Toggle autosaving. (Enabled recommended)</p>
+        <button type='button' onmousedown="reset()"class='b'>
+            Hard reset
+        </button><p class='mist' style='font-family: "Arial";'>Resets game: only do if autosvaing off!</p>
+        <button type='button' onmousedown='export_()'class='b'>
+          Export save
+        </button><p class='mist' style='font-family: "Arial";'>Export save file.</p>
+        <button type='button' onclick='import_()'class='b'>Import save</button><p class='mist' style='font-family: "Arial";'>Import save file. (Current save will be overwritten)</p>
+        <button type='button' onclick='show("help", "main")'class='b'>How to play</button><br><br>
+        <button type='button' onclick='bg()'class='b'>
+          Toggle background
+        </button><br><br>
+        <button type='button' onclick='clickPrestige()'class='b'>
+          Prestige. Req: $<span id='pres'>25,000</span>
+        </button><br><br>
+        <input id='cb' type='text' hidden>
+    </div>
+    
+
+    <div id='help' style='display: none;'>
+        <div onclick='show("main", "help")'><h1 class='shade'><b>HOW TO PLAY</b></h1></div>
+        <p class='pp'id='x'>1) You have to buy units to start "battling". But you also need to buy housing to house the troops, which has no other purpose than housing. ᕦ(⨴ヮ⨵)ᕥ</p>
+        <p class='pp'id='x'>Over at your stats, you will see buttons that say "upgrade etc..". Click those to use money to improve your troops. Honestly, i don't really know the eventual point of the game. XD.</p>
+        <h4>Stuff coming soon... (i hope)</h4>
+        <ul>
+          <li>Import/export saves: currently exists, and doesn't work.</li>
+          <li>Prestige: added before, was terribly broken.<br>Currently testing.</li>
+          <li>Decrease tickspeed for battle: also added before, also broken.</li>
+        </ul>
+        <p id='x'>Hotkeys (units/housing): <kbd>a</kbd>,<kbd>b</kbd>,<kbd>c</kbd>, <kbd>m</kbd>, <kbd>o</kbd>, <kbd>s</kbd></p>
+        <p>Save: <kbd>ctrl</kbd><kbd>shift</kbd><kbd>s</kbd></p>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="utils.js"></script>
+  </body>
+</html>
