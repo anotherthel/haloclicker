@@ -39,7 +39,7 @@ var ff={
     wins: 0,
     losses: 0,
     ties: 0,
-    chance: null,
+    chance: 0,
     basic_factory: [0, 75, 1],// income: amount, cost, $/sec
     tier2_factory: [0, 250, 2],
     tier3_factory: [0, 1000, 5],
@@ -69,12 +69,14 @@ var ff={
       'amount': 0,
       'workers': 0,
       'fact': 0,
+      'factCost': 20,
       'cpc': 0
     },
     steel: {
       'amount': 0,
       'workers': 0,
       'fact': 0,
+      'factCost': 25,
       'cpc': 0
     }
     
@@ -106,7 +108,7 @@ function clickll(){
 
 
 function showval(a, b){
-    return document.getElementById(a).innerHTML=b;
+    return document.getElementById(a).innerHTML=b.toLocaleString('en-US');
 }
 let now=Date.now();
 let goal=now+1000;// 10 seconds
@@ -178,6 +180,17 @@ function updateview()
     //showval('playerMetal', ff.steel.amount);
     //document.getElementById('playerMetal').innerText=ff.steel.amount;
     showval('playerOre', ff.ore.amount);
+    showval('playerMetal', ff.steel.amount);
+    showval('metalPerSec', ff.steel.cpc);
+
+    showval('orePerSec', ff.ore.cpc);
+
+    showval('metalFact', ff.steel.fact);
+
+    //showval('metalWorkerCost', ff.steel.workerCost);
+    
+
+    //showval('metalMax', ff.steel.max);
 
     //showval('metalN', parseInt(ff.metalReq));
     //showval('oreN', parseInt(ff.oreReq));
@@ -216,10 +229,6 @@ function prestige()
 {
   ff={
     money: 20,
-    metal: 0,
-    ore: 0,
-    metal_max: 50,
-    ore_max: 50,
     income: 0,
     cpc: 1,
     marines: [0, 5, 1, 1, 10, 15],
@@ -254,10 +263,37 @@ function prestige()
     tick: 1000,
     _cost: 1000,
     font: 'Halo',
-    times: 0
+
+    /*metal: 0,
+    ore: 0,
+    miners: 0,
+    metalW: 0,
+
+    metalHousing: 0,
+    metalReq: 10,
+    oreReq: 15,
+    mineHousing: 0
+
+    metalWorker:{
+      cost: 10,
+      amount: 0
+    }*/
+    
+    ore: {
+      'amount': 0,
+      'workers': 0,
+      'fact': 0,
+      'cpc': 0,
+    },
+    steel: {
+      'amount': 0,
+      'workers': 0,
+      'fact': 0,
+      'cpc': 0
+    }
+    
 }
-ff.times+=1;
-max=100;
+
 //req=25000;
     ff.income=ff.times;
     req=parseInt((req*1.5).toFixed(0));
@@ -280,33 +316,35 @@ function checkButtons(){
     document.getElementById("spartanbutton").disabled=true;
   if (ff.money>=ff.spartans[1])
     document.getElementById("spartanbutton").disabled=false;
-  if (ff.money<ff.basic_factory[1])
+  if (ff.steel.amount<ff.basic_factory[1])
     document.getElementById("fact1").disabled=true;
-  if (ff.money>=ff.basic_factory[1])
+  if (ff.steel.amount>=ff.basic_factory[1])
     document.getElementById("fact1").disabled=false;
-  if (ff.money<ff.tier2_factory[1])
+  if (ff.steel.amount<ff.tier2_factory[1])
     document.getElementById("fact2").disabled=true;
-  if (ff.money>=ff.tier2_factory[1])
+  if (ff.steel.amount>=ff.tier2_factory[1])
     document.getElementById("fact2").disabled=false;
-  if (ff.money<ff.tier3_factory[1])
+  if (ff.steel.amount<ff.tier3_factory[1])
     document.getElementById("fact3").disabled=true;
-  if (ff.money>=ff.tier3_factory[1])
+  if (ff.steel.amount>=ff.tier3_factory[1])
     document.getElementById("fact3").disabled=false;
-  if (ff.money<ff.shipments[1])
+  if (ff.steel.amount<ff.shipments[1])
     document.getElementById("fact4").disabled=true;
-  if (ff.money>=ff.shipments[1])
+  if (ff.steel.amount>=ff.shipments[1])
     document.getElementById("fact4").disabled=false;
-  if (ff.money<ff.marines[4])
+
+    
+  if (ff.steel.amount<ff.marines[4]&&ff.ore.amount<ff.marines[5])
     document.getElementById("up1").disabled=true;
-  if (ff.money>=ff.marines[4])
+  if (ff.steel.amount>=ff.marines[4]&&ff.ore.amount>=ff.marines[5])
     document.getElementById("up1").disabled=false;
-  if (ff.money<ff.odsts[4])
+  if (ff.steel.amount<ff.odsts[4]&&ff.ore.amount<ff.odsts[5])
     document.getElementById("up2").disabled=true;
-  if (ff.money>=ff.odsts[4])
+  if (ff.steel.amount>=ff.odsts[4]&&ff.ore.amount>=ff.odsts[5])
     document.getElementById("up2").disabled=false;
-  if (ff.money<ff.spartans[4])
+  if (ff.steel.amount<ff.spartans[4]&&ff.ore.amount<ff.spartans[5])
     document.getElementById("up3").disabled=true;
-  if (ff.money>=ff.spartans[4])
+  if (ff.steel.amount>=ff.spartans[4]&&ff.ore.amount>=ff.spartans[5])
     document.getElementById("up3").disabled=false;
   if (ff.money<ff.camps.cost)
     document.getElementById("h1").disabled=true;
@@ -320,6 +358,15 @@ function checkButtons(){
     document.getElementById("h3").disabled=true;
   if (ff.money>=ff.bases.cost)
     document.getElementById("h3").disabled=false;
+
+  if (ff.money<10)
+    document.getElementById('miner').disabled=true;
+  if (ff.money>=10)
+    document.getElementById('miner').disabled=false;
+  if (ff.money<15)
+    document.getElementById('metalC').disabled=true;
+  if (ff.money>=15)
+    document.getElementById('metalC').disabled=false;
 }
 setInterval(checkButtons, 100)
 
@@ -380,13 +427,56 @@ function buy_production(type){
     }
 }
 
-function gainResource(x){
+
+
+function gainResource(x, id, id2){
+  var time=10;
+  //document.getElementById('metalClick').disabled=true;
+  /*var i = setInterval(()=>{
+    if (time==100)
+      document.getElementById('metalClick').disabled=false;
+      clearInterval(i);
+    document.getElementById('craftBar').style.width=time+'%';
+    time++;
+  }, 10)*/
+  //document.getElementById("metalClick").disabled=true;
+  move(id, id2)
   x.amount+=1;
-  //console.log(resource.amount)
+  //document.getElementById("metalClick").disabled=false;
   updateview();
+  //console.log(x)
+  //document.getElementById('metalClick').disabled=false;
+  //updateview();
 }
 
+function buyWorker(type){
+  if (type.workers>=type.fact*10)
+    return;
+  var costc;
+  if (type==ff.steel)
+    costc=15;
+  if (type==ff.ore)
+    costc=10
+  if (ff.money>=costc){
+    ff.money-=costc;
+    type.workers+=1;
+    type.cpc+=1;
+    updateview();
+  }
+}
 
+setInterval(function(){
+  ff.steel.amount+=ff.steel.cpc;
+  ff.ore.amount+=ff.ore.cpc;
+  updateview();
+}, 1000)
+
+function buildFactory(type){
+  if (type.amount>=type.workers*10){
+  type.amount-=type.workers*10;
+  type.fact+=1;
+  updateview();}
+}
 
 
 
@@ -412,16 +502,38 @@ function sleep(ms) {
 }
 
 var i = 0;
-function move() {
+function move(id, id2) {
+  document.getElementById(id2).disabled=true;
   if (i == 0) {
     i = 1;
-    var elem = document.getElementById("bar");
+    var elem = document.getElementById(id);
     var width = 1;
     var id = setInterval(frame, 15);
     function frame() {
       if (width >= 100) {
         clearInterval(id);
+        document.getElementById(id2).disabled=false;
         i = 0;
+      } else {
+        width++;
+        elem.style.width = width + "%";
+      }
+    }
+  }
+}
+var ii=0
+function move2(id) {
+  //document.getElementById(id2).disabled=true;
+  if (ii == 0) {
+    ii = 1;
+    var elem = document.getElementById(id);
+    var width = 1;
+    var id = setInterval(frame, 15);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        //document.getElementById(id2).disabled=false;
+        ii = 0;
       } else {
         width++;
         elem.style.width = width + "%";
@@ -438,8 +550,8 @@ function battle()
         //document.getElementById("bar").style.width=i+'%';
         //sleep(1);
       //}
-        ff.food-=ff.troops;
-        move();
+        //ff.food-=ff.troops;
+        move2("how");
         let num=Math.random()*max;
         num=parseFloat(num.toFixed(2));
         var chance=ff.marines[0]+(3*ff.odsts[0])+(15*ff.spartans[0])+(ff.odsts[3]+ff.spartans[3]);
@@ -505,7 +617,7 @@ function load(){
 // change
 function reset()
 {
-    ff={
+     ff={
     money: 20,
     income: 0,
     cpc: 1,
@@ -543,12 +655,20 @@ function reset()
     font: 'Halo',
     times: 0,
 
-    /*metal: {
-      amount: 0,
-      workers: 0,
-      fact: 0,
-      cpc: 0
-    },*/
+    /*metal: 0,
+    ore: 0,
+    miners: 0,
+    metalW: 0,
+
+    metalHousing: 0,
+    metalReq: 10,
+    oreReq: 15,
+    mineHousing: 0
+
+    metalWorker:{
+      cost: 10,
+      amount: 0
+    }*/
     
     ore: {
       'amount': 0,
@@ -562,16 +682,19 @@ function reset()
       'fact': 0,
       'cpc': 0
     }
+    
 }
-
 max=100;
 req=25000;
 
     updateBattleStats();
     updateview();
     save();
-
 }
+
+
+
+
 
 
 // change
@@ -627,9 +750,9 @@ function load(){
 
 
 function upgrade(unit){
-  if (ff.metal>=unit[4]&&ff.ore>=unit[5]&&unit[0]>0){
-    ff.metal-=unit[4];
-    ff.ore-=unit[5]
+  if (ff.steel.amount>=unit[4]&&ff.ore.amount>=unit[5]&&unit[0]>0){
+    ff.steel.amount-=unit[4];
+    ff.ore.amount-=unit[5]
     unit[3]*=1.1;
     unit[2]*=1.05;
     unit[3]=parseFloat(unit[3].toFixed(2));
@@ -703,10 +826,18 @@ function import_(){
     }
   }
 }
+function check(){
+  return localStorage.getItem('_ff')==null
+}
 
 // auto load save?
-if (autosaving)
-  window.onload=load();
+/*if (autosaving)
+  window.onload=load();*/
+window.onload=function(){
+  var x=check();
+  if (x)
+    $.notify("Use 'load game' to load previous game.", "info")
+}
 
 this.addEventListener('keydown', event=>{
   if (event.keyCode==17){
