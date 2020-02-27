@@ -111,7 +111,7 @@
             Cooldown: <span id='tick'>500</span>ms</p>
 
         <div id='barContainer' style='width:100%;height:10px;background:white;text-align:center;position:relative;'>
-      <div id='bar' style='height: 100%; width: 100%; background-color: rgb(0, 204, 0); display: block; margin: auto;'>
+      <div id='how' style='height: 100%; width: 100%; background-color: rgb(0, 204, 0); display: block; margin: auto;'>
       </div>
     </div>
     </div>
@@ -172,12 +172,12 @@
 
 <div id='b' style='display:none;'><br><br>
   <div class='box' style='display:inline-block;'>
-  <button class='tabs' type='button' onclick='tabShow("metal", "ore", "factilites")'>
+  <button class='tabs' type='button' id='metalTab'onclick='tabShow("metal", "ore", "factilites", "metalTab")'>
     Metal</button><br><br>
-  <button class='tabs' type='button' onclick='tabShow("ore", "metal", "factilites")'>
+  <button class='tabs' type='button' id='oreTab'onclick='tabShow("ore", "metal", "factilites", "oreTab")'>
     Mining
   </button><br><br>
-  <button class='tabs' type='button' onclick='tabShow("factilites", "ore", "metal")'>
+  <button class='tabs' type='button' id='tab3'onclick='tabShow("factilites", "ore", "metal", "tab3")'>
     Facilities
   </button><br><br>
   </div>
@@ -185,16 +185,20 @@
   <div class='box'>
     <div class='army' id='metal' style='display:none;'>
       <h4>Metal</h4>
-      <button class='btn' type='button' onclick='gainResource(ff.metal)'>
+      <button class='btn' type='button' onclick='gainResource(ff.steel, "craftBar", "metalClick")' id='metalClick'>
         Craft 1 metal.
-      </button>
+      </button><br><br>
+      <div id='barContainer' style='width:50%;height:10px;background:white;text-align:center;position:relative;'>
+      <div id='craftBar' style='height: 100%; width: 100%; background-color: rgb(0, 204, 0); display: block; margin: auto;'></div></div>
       <p class='pp'>
         Metal is one of the materials needed to upgrade troops.
       </p>
       <p class='pp'>Metal: <span id='playerMetal'>0</span></p>
-      <button class='btn' type='button' onclick='metalWorker()'>
-        Hire 1 metalworker. ($10)
+      <button class='btn' type='button' onclick='buyWorker(ff.steel)' id='metalC'>
+        Hire 1 metalworker. ($15)
       </button>
+      <p class='pp'>Metal/sec: <span id='metalPerSec'>0</span></p>
+      <p class='pp'>Factories: <span id='metalFact'>0</span></p>
     </div>
 
     <div class='army' id='ore' style='display:none;'>
@@ -202,21 +206,26 @@
       <button class='btn'type='button'onclick='gainResource(ff.ore)'>
         Mine 1 ore.
       </button>
+      
       <p class='pp'>
         Ore is one of the materials needed to upgrade troops.<br> It is one of the cheaper and more needed materials.</p>
       <p class='pp'>
         Ore: <span id='playerOre'>
           0</span>
       </p>
+      <button class='btn' type='button' onclick='buyWorker(ff.ore)' id='miner'>
+        Hire 1 miner. ($10)
+      </button>
+      <p class='pp'>Ore/sec: <span id='orePerSec'>0</span></p>
     </div>
     <div class='army' id='factilites' style='display:none;'>
       <h4>Facilities</h4>
       <p class='pp'>Factory<br>Metal workers need a place to work!<br>Housing: +10
-      <span><button class='btn'type='button'onclick='metalFactory()'>
+      <span><button class='btn'type='button'onclick='buildFactory(ff.steel)' id='buildMetalFact'>
         Build 1 metal factory.
         </button></span>
       </p>
-      <p class='pp'>Mine<br>Miners also need a place to work.<br>Housing: +15</p>
+      <p class='pp'>Mine<br>Miners also need a place to work.<br>Housing: +10</p>
     </div>
 
   </div>
