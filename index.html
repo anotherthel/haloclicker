@@ -57,7 +57,7 @@
     </div>
 
 
-    
+
     <div class='army'>
         <h3>Production</h3>
         <p class='pp'id='x'><span>
@@ -83,7 +83,7 @@
                     </span>
                 </button>
             </span>
-            Tier 3 factories (+5 income/sec): 
+            Tier 3 factories (+5 income/sec):
             <span id='f3'>
                 0
             </span>
@@ -99,7 +99,7 @@
         Shipments (+10 income/sec): <span id='f4'>
             0</span>
         </p>
-                    
+
     </div>
     <div class='army'>
         <h3>Battle</h3>
@@ -115,11 +115,11 @@
       </div>
     </div>
     </div>
-    
+
 <!--<br><br><br><br><br><br><br><br>-->
 
 
-    
+
 </div>
 <div class='box more'>
     <div class='army'>
@@ -152,7 +152,7 @@
         <p class='pp'id='x'>Army pop: <span id='pop'>0</span><br>
           Max pop: <span id='maxpop'>0</span></p>
 
-            
+
 
 
     </div>
@@ -205,9 +205,11 @@
       <h4>Ore</h4>
       <button class='btn'type='button'onclick='gainResource(ff.ore)'>
         Mine 1 ore.
-      </button>
-      
-      <p class='pp'>
+      </button><br><br>
+      <div id='barContainer2' style='width:50%;height:10px;background:white;text-align:center;position:relative;'>
+      <div id='mineBar' style='height: 100%; width: 100%; background-color: rgb(0, 204, 0); display: block; margin: auto;'></div></div>
+
+      <p class='pp'>g
         Ore is one of the materials needed to upgrade troops.<br> It is one of the cheaper and more needed materials.</p>
       <p class='pp'>
         Ore: <span id='playerOre'>
@@ -217,6 +219,7 @@
         Hire 1 miner. ($10)
       </button>
       <p class='pp'>Ore/sec: <span id='orePerSec'>0</span></p>
+      <p class='pp'>Mines: <span id='oreMine'>0</span></p>
     </div>
     <div class='army' id='factilites' style='display:none;'>
       <h4>Facilities</h4>
@@ -233,20 +236,20 @@
 
 </div>
 
-  
 
-    
+
+
 </div>
 
 
 
-    
+
 
     </div>
 
 
   <div class='army f' id='ops'style='display:none;'>
-        
+
         <button type='button'onmousedown='save()'class='b'>
             Save game
         </button>
@@ -274,7 +277,7 @@
         </button><br><br>
         <input id='cb' type='text' hidden>
     </div>
-    
+
 
     <div id='help' style='display: none;'>
         <div onclick='show("main", "help")'><h1 class='shade'><b>HOW TO PLAY</b></h1></div>
