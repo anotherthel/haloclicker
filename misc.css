@@ -1,0 +1,35 @@
+/*
+A .css file for storing more CSS
+*/
+
+
+.mist{
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.tabs{
+  background-color: grey;
+  border: 2px green solid;
+  cursor: default;
+  width: 250px;
+  color: white;
+  transition: 0.5s;
+  margin-left: 0%;
+  margin-right: 0%;
+  padding: 10px;
+}
+.tabs:hover{
+  background-color: lightgrey;
+  color: black;
+}
+
+li{
+  background-color: grey;
+  color: white;
+  border: 1px green solid;
+  transition: 0.1s;
+}
+.li:hover{
+    background: rgb(125, 151, 118);
+}
