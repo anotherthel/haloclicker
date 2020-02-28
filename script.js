@@ -417,8 +417,8 @@ function buy_housing(unit){
 
 
 function buy_production(type){
-    if (ff.money>=type[1]){
-        ff.money-=type[1];
+    if (ff.steel.amount>=type[1]){
+        ff.steel.amount-=type[1];
         type[0]+=1;
         //console.log(type[0], ff.basic_factory[0])
         type[1]*=1.75;
