@@ -10,7 +10,7 @@ var test=0;
 let autosaving=true;
 
 // units: amount, cost, atk, def, upcost(metal), upcost(ore), lvl
-// 
+//
 //player, housing, game, income
 var ff={
     money: 20,
@@ -64,22 +64,24 @@ var ff={
       cost: 10,
       amount: 0
     }*/
-    
+
     ore: {
       'amount': 0,
       'workers': 0,
       'fact': 0,
       'factCost': 20,
-      'cpc': 0
+      'cpc': 0,
+      'max': 50
     },
     steel: {
       'amount': 0,
       'workers': 0,
       'fact': 0,
       'factCost': 25,
-      'cpc': 0
+      'cpc': 0,
+      'max': 50
     }
-    
+
 }
 
 var max=100;
@@ -163,8 +165,8 @@ function updateview()
     //showval('tick', ff.tick);
     //console.log(ff.tick)
     //showval('tickcost', ff._cost);
-    
-    
+
+
     //misc again
     showval('pop', ff.troops);
     showval('maxpop', ff.housing);
@@ -187,8 +189,11 @@ function updateview()
 
     showval('metalFact', ff.steel.fact);
 
+    showval('maxMetal', ff.steel.max);
+    showval('maxOre', ff.ore.max);
+
     //showval('metalWorkerCost', ff.steel.workerCost);
-    
+
 
     //showval('metalMax', ff.steel.max);
 
@@ -278,7 +283,7 @@ function prestige()
       cost: 10,
       amount: 0
     }*/
-    
+
     ore: {
       'amount': 0,
       'workers': 0,
@@ -291,7 +296,7 @@ function prestige()
       'fact': 0,
       'cpc': 0
     }
-    
+
 }
 
 //req=25000;
@@ -333,7 +338,7 @@ function checkButtons(){
   if (ff.steel.amount>=ff.shipments[1])
     document.getElementById("fact4").disabled=false;
 
-    
+
   if (ff.steel.amount<ff.marines[4]&&ff.ore.amount<ff.marines[5])
     document.getElementById("up1").disabled=true;
   if (ff.steel.amount>=ff.marines[4]&&ff.ore.amount>=ff.marines[5])
@@ -430,6 +435,8 @@ function buy_production(type){
 
 
 function gainResource(x, id, id2){
+  if (x.amount>=x.max)
+    return;
   var time=10;
   //document.getElementById('metalClick').disabled=true;
   /*var i = setInterval(()=>{
@@ -669,7 +676,7 @@ function reset()
       cost: 10,
       amount: 0
     }*/
-    
+
     ore: {
       'amount': 0,
       'workers': 0,
@@ -682,7 +689,7 @@ function reset()
       'fact': 0,
       'cpc': 0
     }
-    
+
 }
 max=100;
 req=25000;
@@ -704,7 +711,7 @@ function save()
     window.localStorage.clear();
     window.localStorage.setItem('_ff', _ff);
     //console.log('Game saved.');
-    $.notify("Game saved.", "success");  
+    $.notify("Game saved.", "success");
 }
 
 function autosave()
@@ -713,8 +720,8 @@ function autosave()
     var _ff=JSON.stringify(ff);
     window.localStorage.clear();
     window.localStorage.setItem('_ff', _ff);
-    //console.log('Game saved.'); 
-    $.notify("Game saved.", "success");  
+    //console.log('Game saved.');
+    $.notify("Game saved.", "success");
 }
 setInterval(autosave, 30000);
 
@@ -846,7 +853,7 @@ this.addEventListener('keydown', event=>{
         save();
     })
   }
-    
+
 })
 /*
 function metal(){
