@@ -719,6 +719,13 @@ function toggle()
         autosaving=true;
     }
     console.log(autosaving);
+    var x;
+    if (autosaving)
+      x='enabled';
+    else {
+      x='disabled'
+    }
+    $.notify(`Autosaving ${x}`, "info")
 }
 
 function load(){
