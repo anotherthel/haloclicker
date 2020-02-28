@@ -764,6 +764,13 @@ function upgrade(unit){
   }
 }
 
+function upgradeStorage(y){
+  if (y.amount>=y.max){
+    y.amount=0;
+    y.max*=2;
+    updateview();
+  }
+}
 
 this.addEventListener('keydown', event => {
   if (event.keyCode == 77) {// m
