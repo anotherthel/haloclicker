@@ -145,14 +145,14 @@ function updateview()
     showval('spartans', ff.spartans[0]);
     showval('spartancost', ff.spartans[1]);
     //factory stats
-    showval('factory1', ff.basic_factory[1]);
+
     showval('f1', ff.basic_factory[0]);
-    showval('factory2', ff.tier2_factory[1]);
+
     showval('f2', ff.tier2_factory[0]);
 
-    showval('factory3', ff.tier3_factory[1]);
+
     showval('f3', ff.tier3_factory[0]);
-    showval('factory4', ff.shipments[1]);
+
     showval('f4', ff.shipments[0]);
     //equip stats
     showval('atk1', ff.marines[2]);
@@ -191,15 +191,6 @@ function updateview()
 
     showval('maxMetal', ff.steel.max);
     showval('maxOre', ff.ore.max);
-
-    showval('marineUpgrade', ff.marines[4]);
-    showval('marineUpgrade2', ff.marines[5]);
-
-    showval('odstUpgrade', ff.odsts[4]);
-    showval('odstUpgrade2', ff.odsts[5]);
-
-    showval('spartanUpgrade', ff.spartans[4]);
-    showval('spartanUpgrade2', ff.spartans[5]);
 
 }
 
@@ -758,10 +749,6 @@ function upgrade(unit){
     unit[2]*=1.05;
     unit[3]=parseFloat(unit[3].toFixed(2));
     unit[2]=parseFloat(unit[2].toFixed(2));
-    unit[5]+=parseInt((unit[5]/2).toFixed(0));
-    console.log(unit[4]);
-    console.log(unit[5]);
-    unit[4]+=parseInt((unit[4]/2).toFixed(0));
     updateview();
     updateBattleStats();
   }
