@@ -758,7 +758,9 @@ function upgrade(unit){
     unit[2]*=1.05;
     unit[3]=parseFloat(unit[3].toFixed(2));
     unit[2]=parseFloat(unit[2].toFixed(2));
-    unit[5]+=parseInt((unit[5]/2).toFixed(0))
+    unit[5]+=parseInt((unit[5]/2).toFixed(0));
+    console.log(unit[4]);
+    console.log(unit[5]);
     unit[4]+=parseInt((unit[4]/2).toFixed(0));
     updateview();
     updateBattleStats();
