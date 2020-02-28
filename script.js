@@ -435,25 +435,12 @@ function buy_production(type){
 
 
 function gainResource(x, id, id2){
-  if (x.amount>=x.max)
-    return;
-  var time=10;
-  //document.getElementById('metalClick').disabled=true;
-  /*var i = setInterval(()=>{
-    if (time==100)
-      document.getElementById('metalClick').disabled=false;
-      clearInterval(i);
-    document.getElementById('craftBar').style.width=time+'%';
-    time++;
-  }, 10)*/
-  //document.getElementById("metalClick").disabled=true;
-  move(id, id2)
-  x.amount+=1;
-  //document.getElementById("metalClick").disabled=false;
-  updateview();
-  //console.log(x)
-  //document.getElementById('metalClick').disabled=false;
-  //updateview();
+  if (x.amount<x.max){
+    var time=10;
+    move(id, id2)
+    x.amount+=1;
+    updateview();
+  }
 }
 
 function buyWorker(type){
