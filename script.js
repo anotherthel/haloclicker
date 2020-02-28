@@ -421,8 +421,8 @@ function buy_production(type){
         ff.steel.amount-=type[1];
         type[0]+=1;
         //console.log(type[0], ff.basic_factory[0])
-        type[1]*=1.75;
-        type[1]=parseFloat(type[1].toFixed(2));
+        //type[1]*=1.75;
+        //type[1]=parseFloat(type[1].toFixed(2));
         ff.income+=type[2];
         ff.income=parseFloat(ff.income.toFixed(2));
         ff.cpc+=1;
