@@ -802,12 +802,10 @@ function export_()
   //save_=_player+'>>'+_game+'>>'+_income+'>>'+_max+'>>'+_req;
   console.log(save_);
   //document.getElementById('saved').innerHTML=save_;
-  var txt=document.getElementById('cb');
-  cb.value=_ff;
-  cb.style.display='block'
-  cb.select();
+  var txt=document.getElementById('saveExport');
+  txt.value=_ff;
+  txt.select();
   document.execCommand('copy');
-  cb.style.display='none';
   $.notify("Save copied.", "info")
 }
 
