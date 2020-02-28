@@ -9,7 +9,7 @@ var test=0;
 
 let autosaving=true;
 
-// units: amount, cost, atk, def, upcost(metal), upcost(ore), lvl
+// units: amount, cost, atk, def, upcost(metal), upcost(ore)
 //
 //player, housing, game, income
 var ff={
@@ -192,23 +192,14 @@ function updateview()
     showval('maxMetal', ff.steel.max);
     showval('maxOre', ff.ore.max);
 
-    //showval('metalWorkerCost', ff.steel.workerCost);
+    showval('marineUpgrade', ff.marines[4]);
+    showval('marineUpgrade2', ff.marines[5]);
 
+    showval('odstUpgrade', ff.odsts[4]);
+    showval('odstUpgrade2', ff.odsts[5]);
 
-    //showval('metalMax', ff.steel.max);
-
-    //showval('metalN', parseInt(ff.metalReq));
-    //showval('oreN', parseInt(ff.oreReq));
-
-    //showval('lvl1', ff.marines[5]);
-    //showval('lvl2', ff.odsts[5])
-    //showval('lvl3', ff.spartans[5])
-
-
-    //console.log(' for sure as the sun rises in the west, of all the singers and poets on earth, I am the bestest. - hevipelle');
-    //resources
-    //showval('m', ff.metal);
-    //showval('mMax', ff.metal_max);
+    showval('spartanUpgrade', ff.spartans[4]);
+    showval('spartanUpgrade2', ff.spartans[5]);
 
 }
 
@@ -372,6 +363,15 @@ function checkButtons(){
     document.getElementById('metalC').disabled=true;
   if (ff.money>=15)
     document.getElementById('metalC').disabled=false;
+
+  if (ff.steel.amount<ff.steel.max)
+    document.getElementById('upgradeMetalStorage').disabled=true;
+  if (ff.steel.amount>=ff.steel.max)
+    document.getElementById('upgradeMetalStorage').disabled=false;
+  if (ff.ore.amount<ff.ore.max)
+    document.getElementById('upgradeOreStorage').disabled=true;
+  if (ff.ore.amount>=ff.ore.max)
+    document.getElementById('upgradeOreStorage').disabled=false;
 }
 setInterval(checkButtons, 100)
 
@@ -758,7 +758,8 @@ function upgrade(unit){
     unit[2]*=1.05;
     unit[3]=parseFloat(unit[3].toFixed(2));
     unit[2]=parseFloat(unit[2].toFixed(2));
-    unit[5]+=1;
+    unit[5]+=parseInt((unit[5]/2).toFixed(0))
+    unit[4]+=parseInt((unit[4]/2).toFixed(0));
     updateview();
     updateBattleStats();
   }

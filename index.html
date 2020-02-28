@@ -131,7 +131,7 @@
             <button class='btn wide' type='button' onclick='upgrade(ff.marines)' id='up1'>
               Upgrade marines.
             </button>
-            <span class='mist'>10 metal, 15 ore</span>
+            <span class='mist'><span id='marineUpgrade'>10</span> metal, <span id='marineUpgrade2'>15</span> ore</span>
         </p>
         <p class='pp'id='x'>ODSTs<!-- (lvl <span id='lvl2'>0</span>)-->:<br>
           Amount: <span id='odsts'>0</span><br>
@@ -139,7 +139,7 @@
             <button class='btn wide' type='button' onclick='upgrade(ff.odsts)' id='up2'>
               Upgrade ODSTs.
             </button>
-            <span class='mist'>25 metal, 30 ore</span>
+            <span class='mist'><span id='odstUpgrade'>25</span> metal, <span id='odstUpgrade2'>30</span> ore</span>
         </p>
         <p class='pp'id='x'>Spartans<!-- (lvl <span id='lvl3'>0</span>)-->:<br>
           Amount: <span id='spartans'>0</span><br>
@@ -147,7 +147,7 @@
             <button class='btn wide' type='button' onclick='upgrade(ff.spartans)' id='up3'>
               Upgrade SPARTANs.
             </button>
-            <span class='mist'>100 metal, 150 ore</span>
+            <span class='mist'><span id='spartanUpgrade'>100</span> metal, <span id='spartanUpgrade2'>150</span> ore</span>
         </p>
         <p class='pp'id='x'>Army pop: <span id='pop'>0</span><br>
           Max pop: <span id='maxpop'>0</span></p>
@@ -194,7 +194,7 @@
         Metal is one of the materials needed to upgrade troops.
       </p>
       <p class='pp'>Metal: <span id='playerMetal'>0</span>/<span id='maxMetal'>50</span></p>
-      <button class='btn'type='button'onclick='upgradeStorage(ff.steel)'>
+      <button class='btn'type='button'onclick='upgradeStorage(ff.steel)' id='upgradeMetalStorage'>
         Upgrade storage.
       </button>
       <button class='btn' type='button' onclick='buyWorker(ff.steel)' id='metalC'>
@@ -218,7 +218,7 @@
         Ore: <span id='playerOre'>
           0</span>/<span id='maxOre'>50</span>
       </p>
-      <button class='btn' type='button' onclick='upgradeStorage(ff.ore)'>
+      <button class='btn' type='button' onclick='upgradeStorage(ff.ore)' id='upgradeOreStorage'>
         Upgrade storage.
       </button>
       <button class='btn' type='button' onclick='buyWorker(ff.ore)' id='miner'>
