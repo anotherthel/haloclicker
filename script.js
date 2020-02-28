@@ -800,7 +800,8 @@ function export_()
 {
   var _ff=btoa(JSON.stringify(ff));
   //save_=_player+'>>'+_game+'>>'+_income+'>>'+_max+'>>'+_req;
-  console.log(save_);
+  //console.log(save_);
+  // that would not be good
   //document.getElementById('saved').innerHTML=save_;
   var txt=document.getElementById('saveExport');
   txt.value=_ff;
