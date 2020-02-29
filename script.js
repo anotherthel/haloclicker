@@ -187,7 +187,10 @@ function updateview()
 
     showval('orePerSec', ff.ore.cpc);
 
-    showval('metalFact', ff.steel.fact);
+    showval('metalHousing', ff.steel.fact*10);
+    showval('metalFactory', ff.steel.fact);
+    showval('oreHousing', ff.ore.fact*10);
+    showval('oreFactory', ff.ore.fact);
 
     showval('maxMetal', ff.steel.max);
     showval('maxOre', ff.ore.max);
