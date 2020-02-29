@@ -80,7 +80,9 @@ var ff={
       'factCost': 25,
       'cpc': 0,
       'max': 50
-    }
+    },
+
+    cost: 0//why not
 
 }
 
@@ -366,6 +368,15 @@ function checkButtons(){
     document.getElementById('upgradeOreStorage').disabled=true;
   if (ff.ore.amount>=ff.ore.max)
     document.getElementById('upgradeOreStorage').disabled=false;
+
+  if (ff.steel.amount<ff.steel.workers*10||ff.steel.amount<10)
+    document.getElementById('buildMine').disabled=true;
+  if (!ff.steel.amount<ff.steel.workers*10||!ff.steel.amount<10)// fyi i just copy-paste and add '!'
+    document.getElementById('buildMine').disabled=false;
+    if (ff.ore.amount<ff.ore.workers*10||ff.ore.amount<10)
+      document.getElementById('buildMetalFact').disabled=true;
+  if (!ff.ore.amount<ff.ore.workers*10||!ff.ore.amount<10)
+    document.getElementById('buildMetalFact').disabled=false;
 }
 setInterval(checkButtons, 100)
 
@@ -460,13 +471,12 @@ setInterval(function(){
 }, 1000)
 
 function buildFactory(type){
-  let cost;
   if (type.workers>0)
-    cost=type.workers*10;
+    ff.cost=type.workers*10;
   else if (type.workers==0)
-    cost=10;
-  if (type.amount>=cost){
-    type.amount-=cost;
+    ff.cost=10;
+  if (type.amount>=ff.cost){
+    type.amount-=ff.cost;
     type.fact+=1;
     updateview();
   }
