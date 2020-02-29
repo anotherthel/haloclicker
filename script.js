@@ -369,13 +369,13 @@ function checkButtons(){
   if (ff.ore.amount>=ff.ore.max)
     document.getElementById('upgradeOreStorage').disabled=false;
 
-  if (ff.steel.amount<ff.steel.workers*10||ff.steel.amount<10)
+  if (ff.steel.amount<ff.steel.workers*10&&ff.steel.amount<10)
     document.getElementById('buildMine').disabled=true;
-  if (!ff.steel.amount<ff.steel.workers*10||!ff.steel.amount<10)// fyi i just copy-paste and add '!'
+  if (!ff.steel.amount<ff.steel.workers*10&&!ff.steel.amount<10)// fyi i just copy-paste and add '!'
     document.getElementById('buildMine').disabled=false;
-    if (ff.ore.amount<ff.ore.workers*10||ff.ore.amount<10)
+    if (ff.ore.amount<ff.ore.workers*10&&ff.ore.amount<10)
       document.getElementById('buildMetalFact').disabled=true;
-  if (!ff.ore.amount<ff.ore.workers*10||!ff.ore.amount<10)
+  if (!ff.ore.amount<ff.ore.workers*10&&!ff.ore.amount<10)
     document.getElementById('buildMetalFact').disabled=false;
 }
 setInterval(checkButtons, 100)
