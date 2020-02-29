@@ -33,3 +33,15 @@ li{
 .li:hover{
     background: rgb(125, 151, 118);
 }
+
+a{
+    font-family: 'Arial';
+    font-size: 100px;
+    font-weight: bold;
+    transition: 0.35s;
+    color: blue;
+    text-decoration: line-through underline overline;
+}
+a:hover{
+    color: lightblue;
+}
