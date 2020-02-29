@@ -461,18 +461,15 @@ setInterval(function(){
 
 function buildFactory(type){
   let cost;
-  if (type.amount>=type.workers*10){
-    if (type.workers==0){
-      cost=10;
-    }
-    else{
-      cost=type.workers*10;
-    }
-  if (type.amount<cost)
-    return;
-  type.amount-=cost;
-  type.fact+=1;
-  updateview();}
+  if (type.workers>0)
+    cost=type.workers*10;
+  else if (type.workers==0)
+    cost=10;
+  if (type.amount>=cost){
+    type.amount-=cost;
+    type.fact+=1;
+    updateview();
+  }
 }
 
 
