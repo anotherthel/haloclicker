@@ -805,7 +805,7 @@ function export_()
   //document.getElementById('saved').innerHTML=save_;
   var txt=document.getElementById('saveExport');
   txt.value=_ff;
-  txt.select();
+  txt.value.select();
   document.execCommand('copy');
   $.notify("Save copied.", "info")
 }
