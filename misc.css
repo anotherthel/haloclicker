@@ -40,7 +40,7 @@ a{
     font-weight: bold;
     transition: 0.35s;
     color: blue;
-    text-decoration: line-through underline overline;
+    text-decoration: underline;
 }
 a:hover{
     color: lightblue;
