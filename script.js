@@ -805,11 +805,17 @@ function export_()
   //document.getElementById('saved').innerHTML=save_;
   var txt=document.getElementById('saveExport');
   txt.value=_ff;
-  txt.focus();
-  txt.select();
-  document.execCommand('copy');
-  $.notify("Save copied.", "info")
 }
+/*let txt=document.getElementById('saveExport');
+document.getElementById('saveExport').onclick=function() {
+  if (txt.value!=""){
+    txt.onfocus=function() {
+      txt.select();
+      txt.onfocus=undefined;
+    }
+    txt.focus();
+  }
+}*/
 
 function import_(){
   cc=1;
