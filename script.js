@@ -468,6 +468,8 @@ function buildFactory(type){
     else{
       cost=type.workers*10;
     }
+  if (type.amount<cost)
+    return;
   type.amount-=cost;
   type.fact+=1;
   updateview();}
