@@ -10,10 +10,15 @@ p{
 .stats{
   border-radius: 4px;
   border: 2px solid #000000;
+  width: 100%;
 }
 
 .box{
     display: flex;
     flex-direction: column;
     float: left;
+}
+/*.box subclasses*/
+.a{
+  width: 35%;
 }
