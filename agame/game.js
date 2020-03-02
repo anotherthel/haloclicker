@@ -25,8 +25,8 @@ function c(id){
 }
 
 setInterval(function(){// function for income
-  player.protons.amount+=0.01*player.protons.income;
-  player.electrons.amount+=0.01*player.electrons.income;
+  player.protons.amount+=player.protons.income;
+  player.electrons.amount+=player.electrons.income;
   showval('protons', player.protons.amount);
   showval('electrons', player.electrons.amount);
 }, 10)
@@ -39,8 +39,8 @@ function gainResource(res){
 }
 
 
-c('gainProton').onclick=gainResource(player.protons);
-c('gainElectron').onclick=gainResource(player.protons);
+document.getElementById('gainProton').onclick=gainResource(player.protons);
+document.getElementById('gainElectron').onclick=gainResource(player.electrons);
 
 
 function save(){
