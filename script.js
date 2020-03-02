@@ -20,8 +20,8 @@ var ff={
 	housing: 0,
 	troops: 0,
 	camps: {
-		"housing: 1,
-		"cost: 10
+		"housing": 1,
+		"cost": 10
 	},
 	barracks: {
 		"housing": 3,
