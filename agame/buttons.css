@@ -1,7 +1,10 @@
+/* currently: button for buying stuff */
+
 .btn{
   width: 190px;
   border: 2px solid black;
   font-family: 'Arial';
   font-size: 16px;
   padding: 2px;
+  float: left;
 }

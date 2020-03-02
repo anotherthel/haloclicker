@@ -25,8 +25,8 @@ function c(id){
 }
 
 setInterval(function(){// function for income
-  player.protons.amount+=player.protons.income/100;
-  player.electrons.amount+=player.electrons.income/100;
+  player.protons.amount+=0.01*player.protons.income;
+  player.electrons.amount+=0.01*player.electrons.income;
   showval('protons', player.protons.amount);
   showval('electrons', player.electrons.amount);
 }, 10)
