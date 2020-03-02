@@ -18,10 +18,13 @@
         <div class='stats'>
           <h4>Stats</h4>
           <p class='pp left'>
-            Protons: <span id='protons'>0</span>&#8194;<span><button class='btn' id='gainProton'>Gain 1</button></span>
+            Protons: <span id='protons'>0</span>&#8194;<span><button class='btn' onclick='gainResource(player.protons)'>Gain 1</button></span>
           </p>
           <p class='pp left'>
-            Electrons: <span id='electrons'>0</span>&#8194;<span><button class='btn' id='gainElectron'>Gain 1</button></span>
+            Electrons: <span id='electrons'>0</span>&#8194;<span><button class='btn' onclick='gainResource(player.electrons)'>Gain 1</button></span>
+          </p>
+          <p class='pp left'>
+            Neutrons: <span id='neutrons'>0</span>&#8194;<span><button class='btn' onclick='gainResource(player.neutrons)'>Gain 1</button></span>
           </p>
 
         </div>
