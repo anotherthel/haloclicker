@@ -10,7 +10,7 @@ var test=0;
 let autosaving=true;
 
 window.onload=function () {
-  document.getElementById("all").style.display="none";
+  document.getElementById("main").style.display="none";
   Swal.fire({
     title: "The site is out for now. Come back later.",
     icon: "error"
