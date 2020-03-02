@@ -1,7 +1,7 @@
 var player={
   protons: {
     'amount': 0,
-    'income': 1
+    'income': 0
   },
   electrons: {
     'amount': 0,
