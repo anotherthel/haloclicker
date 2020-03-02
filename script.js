@@ -9,6 +9,14 @@ var test=0;
 
 let autosaving=true;
 
+window.onload=function () {
+  document.getElementById("main").style.display="none";
+  Swal.fire({
+    title: "The site is out for now. Come back later.",
+    icon: "error"
+  })
+}
+
 
 // units: amount, cost, atk, def, upcost(metal), upcost(ore)
 //
