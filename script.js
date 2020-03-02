@@ -72,8 +72,7 @@ var x=0;
 
 
 
-import * as player from "./data.json";
-var ff=JSON.parse(player);
+var ff=JSON.parse(data);
 
 
 var isMobile = false; //initiate as false
