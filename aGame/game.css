@@ -3,11 +3,18 @@ p{
   font-size: 16px;
   font-weight: bold;
 }
+
 h4{
   font-family: 'Arial';
   font-size: 28px;
   font-weight: bold;
 }
+
+/* text subclasses */
+.left{
+  margin-left: 2px;
+}
+
 
 .main{text-align: left;
 }
