@@ -9,7 +9,7 @@ var test=0;
 
 let autosaving=true;
 
-var ff={
+/*var ff={
 	money: 20,
 	income: 0,
 	cpc: 1,
@@ -60,7 +60,7 @@ var ff={
 		"max": 50
 	},
 	cost: 0
-}
+}*/
 
 //var ff=JSON.parse(stuff);
 
@@ -72,7 +72,8 @@ var x=0;
 
 
 
-
+import * as player from "./data.json";
+var ff=JSON.parse(player);
 
 
 var isMobile = false; //initiate as false
@@ -234,21 +235,6 @@ function prestige()
     _cost: 1000,
     font: 'Halo',
 
-    /*metal: 0,
-    ore: 0,
-    miners: 0,
-    metalW: 0,
-
-    metalHousing: 0,
-    metalReq: 10,
-    oreReq: 15,
-    mineHousing: 0
-
-    metalWorker:{
-      cost: 10,
-      amount: 0
-    }*/
-
     ore: {
       'amount': 0,
       'workers': 0,
@@ -264,7 +250,6 @@ function prestige()
 
 }
 
-//req=25000;
     ff.income=ff.times;
     req=parseInt((req*1.5).toFixed(0));
     ff.money=parseFloat((ff.money*1.1).toFixed(2));
@@ -383,7 +368,6 @@ function buy_unit(unit){//unit means ff.marines ex. cost is marine.cost
         ff.chance=ff.marines[0]+(3*ff.odsts[0])+(5*ff.spartans[0])+(ff.marines[3]+ff.odsts[3]+ff.spartans[3]);
         updateBattleStats();
         ff.bought=true;
-        //document.getElementById("123").disabled=false;
     }
 }
 
@@ -730,10 +714,6 @@ this.addEventListener('keydown', event => {
 function export_()
 {
   var _ff=btoa(JSON.stringify(ff));
-  //save_=_player+'>>'+_game+'>>'+_income+'>>'+_max+'>>'+_req;
-  //console.log(save_);
-  // that would not be good
-  //document.getElementById('saved').innerHTML=save_;
   var txt=document.getElementById('saveExport');
   txt.value=_ff;
 }
