@@ -9,7 +9,7 @@ var test=0;
 
 let autosaving=true;
 
-/*var ff={
+var ff={
 	money: 20,
 	income: 0,
 	cpc: 1,
@@ -60,9 +60,7 @@ let autosaving=true;
 		"max": 50
 	},
 	cost: 0
-}*/
-
-//var ff=JSON.parse(stuff);
+}
 
 var max=100;
 var req=25000;
@@ -72,7 +70,6 @@ var x=0;
 
 
 
-var ff=JSON.parse(data);
 
 
 var isMobile = false; //initiate as false
