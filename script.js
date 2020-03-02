@@ -13,7 +13,7 @@ let autosaving=true;
 // units: amount, cost, atk, def, upcost(metal), upcost(ore)
 //
 //player, housing, game, income
-var ff=JSON.parse(require("./data.json"));
+var ff=JSON.parse(require("/Users/jason/github/equilibriumthegrnt.github.io/data.json"));
 
 var max=100;
 var req=25000;
