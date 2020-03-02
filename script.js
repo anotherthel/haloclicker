@@ -9,6 +9,7 @@ var test=0;
 
 let autosaving=true;
 
+
 // units: amount, cost, atk, def, upcost(metal), upcost(ore)
 //
 //player, housing, game, income
@@ -82,7 +83,8 @@ var ff={
       'max': 50
     },
 
-    cost: 0//why not
+    cost: 0,//why not
+    reset: false;
 
 }
 
@@ -625,7 +627,9 @@ function reset()
      location.reload();
      updateview();
      updateBattleStats();
+     ff.reset=true;
      save_();
+
 }
 
 
@@ -790,7 +794,7 @@ function check(){
   window.onload=load();*/
 window.onload=function(){
   var x=check();
-  if (x)
+  if (x&&ff.reset)
     $.notify("Use 'load game' to load previous game.", "info")
 }
 
