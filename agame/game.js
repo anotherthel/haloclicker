@@ -25,9 +25,6 @@ function c(id){
 }
 
 setInterval(function(){// function for updateview
-  player.protons.amount+=player.protons.income;
-  player.electrons.amount+=player.electrons.income;
-  player.neutrons.amount+=player.neutrons.income;
   showval('protons', player.protons.amount);
   showval('electrons', player.electrons.amount);
   showval('neutrons', player.neutrons.amount);
