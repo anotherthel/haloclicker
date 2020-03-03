@@ -10,10 +10,7 @@ h4{
   font-weight: bold;
 }
 
-/* text subclasses */
-.left{
-  margin-left: 2px;
-}
+
 
 
 .main{text-align: left;
@@ -25,15 +22,19 @@ h4{
   width: 100%;
 }
 
+
+
+
+
+
+
+
 .box{
     display: flex;
     flex-direction: column;
     float: left;
 }
-/*.box subclasses*/
-.a{
-  width: 25%;
-}
+
 
 ul {
   list-style-type: none;
