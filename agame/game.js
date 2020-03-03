@@ -20,6 +20,8 @@ var player={
 
   if (!player.done){
     player.name=prompt("Enter username: ");
+    if (player.name=="")
+      player.name="Username";
     document.getElementById('playerName').innerText=player.name;
     player.done=false;
   }
