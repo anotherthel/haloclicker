@@ -350,7 +350,7 @@ function checkButtons(){
 
 	}
 }
-setInterval(checkButtons, 100)
+setInterval(checkButtons, 10)
 
 function updateBattleStats()
 {
