@@ -17,6 +17,8 @@ var player={
 
 
 
+
+
 function showval(id, content){
   return document.getElementById(id).innerHTML=parseInt(content.toFixed(2)).toLocaleString('en-US');
 }
