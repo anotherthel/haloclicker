@@ -21,4 +21,4 @@ class Settings{
     document.getElementById(h2).style.display="none";
   }
 }
-s=new Settings(true, 30000)
+settings=new Settings(true, 30000)
