@@ -14,5 +14,7 @@ class Settings{
   interval(x){
     this.interval=x;
   }
+
+  
 }
 s=new Settings(true, 30000)
