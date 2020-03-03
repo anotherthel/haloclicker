@@ -423,8 +423,12 @@ function buyWorker(type){
 }
 
 setInterval(function(){
-  ff.steel.amount+=ff.steel.cpc;
-  ff.ore.amount+=ff.ore.cpc;
+	if (ff.steel.amount<ff.steel.max){
+  	ff.steel.amount+=ff.steel.cpc;
+	}
+	if (ff.ore.amount<ff.ore.max){
+  	ff.ore.amount+=ff.ore.cpc;
+	}
   updateview();
 }, 1000)
 
