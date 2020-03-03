@@ -261,20 +261,13 @@ function checkButtons(){
 		document.getElementById('marinebutton').disabled=true;
 
 	}
-  if (ff.money<ff.marines[1])
-    document.getElementById("marinebutton").disabled=true;
-  if (ff.money>=ff.marines[1])
-    document.getElementById("marinebutton").disabled=false;
-  if (ff.money<ff.odsts[1])
-    document.getElementById("odstbutton").disabled=true;
-  if (ff.money>=ff.odsts[1])
-    document.getElementById("odstbutton").disabled=false;
-  if (ff.money<ff.spartans[1])
-    document.getElementById("spartanbutton").disabled=true;
-  if (ff.money>=ff.spartans[1])
-    document.getElementById("spartanbutton").disabled=false;
-  if (ff.steel.amount<ff.basic_factory[1])
-    document.getElementById("fact1").disabled=true;
+  if (ff.money<ff.marines[1]){document.getElementById("marinebutton").disabled=true;}
+  if (ff.money>=ff.marines[1]){document.getElementById("marinebutton").disabled=false;}
+  if (ff.money<ff.odsts[1]){document.getElementById("odstbutton").disabled=true;}
+  if (ff.money>=ff.odsts[1]){document.getElementById("odstbutton").disabled=false;}
+  if (ff.money<ff.spartans[1]){document.getElementById("spartanbutton").disabled=true;}
+  if (ff.money>=ff.spartans[1]){document.getElementById("spartanbutton").disabled=false;}
+  if (ff.steel.amount<ff.basic_factory[1]){document.getElementById("fact1").disabled=true;}
   if (ff.steel.amount>=ff.basic_factory[1])
     document.getElementById("fact1").disabled=false;
   if (ff.steel.amount<ff.tier2_factory[1])
