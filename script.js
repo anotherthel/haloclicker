@@ -336,6 +336,19 @@ function checkButtons(){
       document.getElementById('buildMetalFact').disabled=true;
   if (!ff.ore.amount<ff.ore.workers*10&&!ff.ore.amount<10)
     document.getElementById('buildMetalFact').disabled=false;
+
+	if (ff.housing<1){
+		document.getElementById('spartanbutton').disabled=true;
+		document.getElementById('odstbutton').disabled=true;
+		document.getElementById('marinebutton').disabled=true;
+
+	}
+	if (ff.housing>0){
+		document.getElementById('spartanbutton').disabled=false;
+		document.getElementById('odstbutton').disabled=false;
+		document.getElementById('marinebutton').disabled=false;
+
+	}
 }
 setInterval(checkButtons, 100)
 
