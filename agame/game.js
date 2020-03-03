@@ -1,4 +1,5 @@
 var player={
+  name: "",
   protons: {
     'amount': 0,
     'income': 0
@@ -10,8 +11,18 @@ var player={
   neutrons: {
     'amount': 0,
     'income': 0
-  }
+  },
 
+  done: false
+
+}
+
+window.onload=funtion(){
+  if (!player.done){
+    player.name=prompt("Enter username: ");
+    document.getElementById('playerName').innerText=player.name;
+    player.done=false;
+  }
 }
 
 

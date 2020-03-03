@@ -15,4 +15,4 @@ class Settings{
     this.interval=x;
   }
 }
-s=Settings(true, 30000)
+s=new Settings(true, 30000)
