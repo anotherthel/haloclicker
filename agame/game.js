@@ -17,13 +17,13 @@ var player={
 
 }
 
-window.onload=funtion(){
+
   if (!player.done){
     player.name=prompt("Enter username: ");
     document.getElementById('playerName').innerText=player.name;
     player.done=false;
   }
-}
+
 
 
 
