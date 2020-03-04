@@ -194,58 +194,7 @@ function clickPrestige(){
 
 function prestige()
 {
-  ff={
-    money: 20,
-    income: 0,
-    cpc: 1,
-    marines: [0, 5, 1, 1, 10, 15],
-    odsts: [0, 30, 3, 2, 25, 30],
-    spartans: [0, 1000, 25, 5, 100, 150],
-    bought: false,
-    housing: 0,
-    troops: 0,
-
-  camps:{
-    housing: 1,
-    cost: 10
-  },
-  barracks:{
-    housing: 3,
-    cost: 25
-  },
-  bases: {
-    housing: 20,
-    cost: 250
-  },
-
-    wins: 0,
-    losses: 0,
-    ties: 0,
-    chance: null,
-    basic_factory: [0, 75, 1],// income: amount, cost, $/sec
-    tier2_factory: [0, 250, 2],
-    tier3_factory: [0, 1000, 5],
-    shipments: [0, 5000, 10],
-
-    tick: 1000,
-    _cost: 1000,
-    font: 'Halo',
-
-    ore: {
-      'amount': 0,
-      'workers': 0,
-      'fact': 0,
-      'cpc': 0,
-    },
-    steel: {
-      'amount': 0,
-      'workers': 0,
-      'fact': 0,
-      'cpc': 0
-    }
-
-}
-
+  	reset();
     ff.income=ff.times;
     req=parseInt((req*1.5).toFixed(0));
     ff.money=parseFloat((ff.money*1.1).toFixed(2));
@@ -255,18 +204,12 @@ function prestige()
 
 
 function checkButtons(){
-	if (ff.housing<1){
-		document.getElementById('spartanbutton').disabled=true;
-		document.getElementById('odstbutton').disabled=true;
-		document.getElementById('marinebutton').disabled=true;
-
-	}
-  if (ff.money<ff.marines[1]){document.getElementById("marinebutton").disabled=true;}
-  if (ff.money>=ff.marines[1]){document.getElementById("marinebutton").disabled=false;}
-  if (ff.money<ff.odsts[1]){document.getElementById("odstbutton").disabled=true;}
-  if (ff.money>=ff.odsts[1]){document.getElementById("odstbutton").disabled=false;}
-  if (ff.money<ff.spartans[1]){document.getElementById("spartanbutton").disabled=true;}
-  if (ff.money>=ff.spartans[1]){document.getElementById("spartanbutton").disabled=false;}
+if (ff.money<ff.marines[1]||ff.housing<1){document.getElementById("marinebutton").disabled=true;}
+  if (ff.money>=ff.marines[1]&&ff.housing>0){document.getElementById("marinebutton").disabled=false;}
+  if (ff.money<ff.odsts[1]||ff.housing<1){document.getElementById("odstbutton").disabled=true;}
+  if (ff.money>=ff.odsts[1]&&ff.housing>0){document.getElementById("odstbutton").disabled=false;}
+  if (ff.money<ff.spartans[1]||ff.housing<1){document.getElementById("spartanbutton").disabled=true;}
+  if (ff.money>=ff.spartans[1]&&ff.housing>0){document.getElementById("spartanbutton").disabled=false;}
   if (ff.steel.amount<ff.basic_factory[1]){document.getElementById("fact1").disabled=true;}
   if (ff.steel.amount>=ff.basic_factory[1])
     document.getElementById("fact1").disabled=false;
